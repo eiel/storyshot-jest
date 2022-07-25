@@ -7,7 +7,13 @@ describe("injectFileName", () => {
     jest.mock("babel-jest", () => {
       return {
         default: {
-          process: jest.fn(() => "exports.default.title = 'sample'"),
+          createTransformer: () => {
+            return {
+              process: () => ({
+                code: "exports.default.title = 'sample'"
+              }),
+            };
+          },
         },
       };
     });
@@ -28,7 +34,7 @@ describe("injectFileName", () => {
       "export.default = { component: Example }",
       "example.stories.ts",
       options
-    );
+    ).code;
     expect(actual).toStrictEqual(
       `exports.default.title = 'sample';
 if(exports.default != null) {

@@ -1,15 +1,17 @@
-# @eiel/storyshot-jest-27
-jest 27 transformer for storyshot
+# @eiel/storyshot-jest
+jest 27, 28 transformer for storyshot
 
 # Motivation
 
 don't work [@storybook/addon-storyshots](https://www.npmjs.com/package/@storybook/addon-storyshots) in Jest version 27
-provide unoffitial package for storyshots in Jest v27
+provide unoffitial package for storyshots in Jest v27, v28
+
 
 # Install
 
 ```
-npm install -D @eiel/storyshot-jest-27
+npm install -D @eiel/storyshot-jest-28 # in Jest 28
+npm install -D @eiel/storyshot-jest-27 # in Jest 27
 ```
 
 update `jest.config.js` for storyshot
@@ -17,7 +19,8 @@ update `jest.config.js` for storyshot
 ```diff
  transform: {
 -  '^.+\\.stories\\.tsx?$': '@storybook/addon-storyshots/injectFileName',
-+  '^.+\\.stories\\.tsx?$': '@eiel/storyshot-jest-27',
++  '^.+\\.stories\\.tsx?$': '@eiel/storyshot-jest-28', // in Jest 28
++  '^.+\\.stories\\.tsx?$': '@eiel/storyshot-jest-27', // in Jest 27
    '^.+\\.[jt]sx?$': 'babel-jest',
  },
 ```
