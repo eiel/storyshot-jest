@@ -4,8 +4,8 @@ import type {
   TransformedSource,
   TransformOptions,
 } from "@jest/transform";
-import type { Config } from "@jest/types";
-import type { ProjectConfig } from "@jest/types/build/Config";
+
+type Transform = TransformOptions["config"]["transform"];
 
 type TransformModuleName = string;
 type Pattern = string;
@@ -20,11 +20,11 @@ type MatchTransform =
   | {
       kind: "unMatch";
       fileName: string;
-      transform: ProjectConfig["transform"];
+      transform: Transform
     };
 
 function findNextTransform(
-  transform: ProjectConfig["transform"],
+  transform: Transform,
   fileName: string
 ): MatchTransform {
   const selfTransform = transform.find(([pattern]) =>
@@ -54,7 +54,7 @@ if(exports.default != null) {
 }
 
 function createTranslateParams(
-  sourcePath: Config.Path,
+  sourcePath: string,
   transformed: TransformedSource
 ): [string, string] {
   let code;
@@ -74,7 +74,7 @@ export const injectFileName: SyncTransformer = {
   canInstrument: true,
   process: (
     sourceText: string,
-    sourcePath: Config.Path,
+    sourcePath: string,
     options: TransformOptions
   ) => {
     const transform = findNextTransform(options.config.transform, sourcePath);
@@ -84,13 +84,14 @@ export const injectFileName: SyncTransformer = {
     // TODO support transform options for next TransFormer
     // TODO support createTransformer for next TransFormer
     const {
-      default: { process },
+      default: { createTransformer },
       // need dynamic import, but sync process.
       // eslint-disable-next-line @typescript-eslint/no-var-requires
     } = require(transform.moduleName);
-    const processed = process(sourceText, sourcePath, options);
-    const params = createTranslateParams(sourcePath, processed);
-    return translate(...params);
+    const transformer = createTransformer()
+    const processed = transformer.process(sourceText, sourcePath, options);
+    const params = createTranslateParams(sourcePath, processed.code);
+    return { code: translate(...params) };
   },
 };
 

@@ -1568,9 +1568,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eiel/storyshot-jest-27@workspace:.":
+"@eiel/storyshot-jest-28@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@eiel/storyshot-jest-27@workspace:."
+  resolution: "@eiel/storyshot-jest-28@workspace:."
   dependencies:
     "@babel/core": 7.17.10
     "@babel/preset-env": 7.17.10
