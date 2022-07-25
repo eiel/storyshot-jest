@@ -7,7 +7,7 @@
     "storyshot",
     "jest-transform"
   ],
-  "homepage": "https://github.com/eiel/storyshot-jest-28",
+  "homepage": "https://github.com/eiel/storyshot-jest",
   "license": "MIT",
   "author": "Tomohiko Himura <eiel.hal@gmail.com>",
   "repository": "github:eiel/storyshot-jest",
