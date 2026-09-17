@@ -2007,7 +2007,7 @@ __metadata:
     eslint: 9.38.0
     eslint-config-prettier: 10.1.8
     jest: 28.1.1
-    prettier: 2.8.7
+    prettier: 3.9.8
     prettier-plugin-import-sort: 0.0.7
     typescript: 5.9.2
   languageName: unknown
@@ -5706,12 +5706,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.8.7":
-  version: 2.8.7
-  resolution: "prettier@npm:2.8.7"
+"prettier@npm:3.9.8":
+  version: 3.9.8
+  resolution: "prettier@npm:3.9.8"
   bin:
-    prettier: bin-prettier.js
-  checksum: fdc8f2616f099f5f0d685907f4449a70595a0fc1d081a88919604375989e0d5e9168d6121d8cc6861f21990b31665828e00472544d785d5940ea08a17660c3a6
+    prettier: bin/prettier.cjs
+  checksum: b9728106824ec6f36bf34533252b213f417b724b67947f97f77558c1edfa3e626fb813dfef306fca715e34f349f3d397dfd97fc02dcc50a10a06203211d2294f
   languageName: node
   linkType: hard
 
